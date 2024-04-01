@@ -25,6 +25,15 @@ For the most convenient use, create a file called `.env.local` and write the env
 SOME_ENV_VAR=somevalue
 ```
 
+If you want to be really fancy with your env file you can do comments and exports:
+
+```sh
+# I am a comment and that is OK
+SOME_VAR=someval
+FOO=BAR # comments at line end are OK too
+export BAR=BAZ
+```
+
 ## Download
 
 You can download pre-built k6 binaries from [Releases](https://github.com/szkiba/xk6-dotenv/releases/) page. Check [Packages](https://github.com/szkiba/xk6-dotenv/pkgs/container/xk6-dotenv) page for pre-built k6 Docker images.
