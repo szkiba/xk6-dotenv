@@ -15,47 +15,27 @@ This extension follow the [convention](https://github.com/bkeepers/dotenv#what-o
 | 3rd                | `.env.production`        | production             | No.                      | Shared environment-specific settings                         |
 | Last               | `.env`                   | (any _expect_ `false`) | Depends                  | The Original                                                 |
 
-
-The underlying implementation is https://github.com/joho/godotenv
-
-Built for [k6](https://go.k6.io/k6) using [xk6](https://github.com/grafana/xk6).
-
 ## Usage
 
-Import an entire module's contents:
-```JavaScript
-import * as dotenv from "k6/x/dotenv";
+The `.env` files are loaded automatically when starting k6. To use it, simply create the appropriate `.env` file (see table above) and set (optional) the `K6_ENV` environment variable.
+
+For the most convenient use, create a file called `.env.local` and write the environment variables you want to set in it. One variable per line, in `name=value` form.
+
+```sh
+SOME_ENV_VAR=somevalue
 ```
 
-Import a single export from a module:
-```JavaScript
-import { parse } from "k6/x/dotenv";
-```
+## Download
 
-## API
-
-This extension can be used as a library:
-
-- [parse](docs/README.md#parse)
-- [stringify](docs/README.md#stringify)
-
-For complete API documentation click [here](docs/README.md)!
+You can download pre-built k6 binaries from [Releases](https://github.com/szkiba/xk6-dotenv/releases/) page. Check [Packages](https://github.com/szkiba/xk6-dotenv/pkgs/container/xk6-dotenv) page for pre-built k6 Docker images.
 
 ## Build
 
-To build a `k6` binary with this extension, first ensure you have the prerequisites:
+The [xk6](https://github.com/grafana/xk6) build tool can be used to build a k6 that will include xk6-faker extension:
 
-- [Go toolchain](https://go101.org/article/go-toolchain.html)
-- Git
+```bash
+$ xk6 build --with github.com/szkiba/xk6-dotenv@latest
+```
 
-Then:
+For more build options and how to use xk6, check out the [xk6 documentation](https://github.com/grafana/xk6).
 
-1. Install `xk6`:
-  ```bash
-  $ go install go.k6.io/xk6/cmd/xk6@latest
-  ```
-
-2. Build the binary:
-  ```bash
-  $ xk6 build --with github.com/szkiba/xk6-dotenv@latest
-  ```
