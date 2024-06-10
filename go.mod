@@ -1,6 +1,6 @@
 module github.com/szkiba/xk6-dotenv
 
-go 1.19
+go 1.20
 
 require (
 	github.com/joho/godotenv v1.5.1
