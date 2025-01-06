@@ -40,7 +40,7 @@ You can download pre-built k6 binaries from [Releases](https://github.com/szkiba
 
 ## Build
 
-The [xk6](https://github.com/grafana/xk6) build tool can be used to build a k6 that will include xk6-faker extension:
+The [xk6](https://github.com/grafana/xk6) build tool can be used to build a k6 that will include xk6-dotenv extension:
 
 ```bash
 $ xk6 build --with github.com/szkiba/xk6-dotenv@latest
