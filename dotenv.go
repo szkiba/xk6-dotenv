@@ -11,9 +11,8 @@ func init() {
 	load()
 }
 
-//nolint:errcheck,gosec
 func load() {
-	env := os.Getenv(envVar) //nolint:forbidigo
+	env := os.Getenv(envVar)
 
 	if env == disabled {
 		return
@@ -23,15 +22,15 @@ func load() {
 		env = "development"
 	}
 
-	godotenv.Load(".env." + env + ".local")
+	_ = godotenv.Load(".env." + env + ".local")
 
 	if env != "test" {
-		godotenv.Load(".env.local")
+		_ = godotenv.Load(".env.local")
 	}
 
-	godotenv.Load(".env." + env)
+	_ = godotenv.Load(".env." + env)
 
-	godotenv.Load()
+	_ = godotenv.Load()
 }
 
 const (
