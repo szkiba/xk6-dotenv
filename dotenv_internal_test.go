@@ -10,7 +10,6 @@ import (
 
 const k6env = "K6_ENV"
 
-//nolint:forbidigo
 func TestMain(m *testing.M) {
 	if err := os.Chdir("testdata"); err != nil {
 		log.Fatal(err)
@@ -19,18 +18,16 @@ func TestMain(m *testing.M) {
 	os.Exit(m.Run())
 }
 
-//nolint:forbidigo
 func unset(t *testing.T) {
 	t.Helper()
 
-	require.Nil(t, os.Unsetenv("global"))
-	require.Nil(t, os.Unsetenv("common"))
-	require.Nil(t, os.Unsetenv("local"))
-	require.Nil(t, os.Unsetenv("localonly"))
+	require.NoError(t, os.Unsetenv("global"))
+	require.NoError(t, os.Unsetenv("common"))
+	require.NoError(t, os.Unsetenv("local"))
+	require.NoError(t, os.Unsetenv("localonly"))
 }
 
-//nolint:forbidigo
-func Test_default(t *testing.T) { //nolint:paralleltest
+func Test_default(t *testing.T) {
 	t.Setenv(k6env, "")
 	unset(t)
 	load()
@@ -41,8 +38,7 @@ func Test_default(t *testing.T) { //nolint:paralleltest
 	require.Equal(t, ".env.local", os.Getenv("localonly"))
 }
 
-//nolint:forbidigo
-func Test_disabled(t *testing.T) { //nolint:paralleltest
+func Test_disabled(t *testing.T) {
 	t.Setenv(k6env, "false")
 	unset(t)
 	load()
@@ -53,8 +49,7 @@ func Test_disabled(t *testing.T) { //nolint:paralleltest
 	require.Empty(t, os.Getenv("localonly"))
 }
 
-//nolint:forbidigo
-func Test_test(t *testing.T) { //nolint:paralleltest
+func Test_test(t *testing.T) {
 	t.Setenv(k6env, "test")
 	unset(t)
 	load()
@@ -65,8 +60,7 @@ func Test_test(t *testing.T) { //nolint:paralleltest
 	require.Empty(t, os.Getenv("localonly"))
 }
 
-//nolint:forbidigo
-func Test_production(t *testing.T) { //nolint:paralleltest
+func Test_production(t *testing.T) {
 	t.Setenv(k6env, "production")
 	unset(t)
 	load()
@@ -77,8 +71,7 @@ func Test_production(t *testing.T) { //nolint:paralleltest
 	require.Equal(t, ".env.local", os.Getenv("localonly"))
 }
 
-//nolint:forbidigo
-func Test_development(t *testing.T) { //nolint:paralleltest
+func Test_development(t *testing.T) {
 	t.Setenv(k6env, "development")
 	unset(t)
 	load()
