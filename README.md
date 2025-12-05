@@ -71,7 +71,7 @@ export TIMEOUT=30
 
 ## Download
 
-You can download pre-built k6 binaries from [Releases](https://github.com/szkiba/xk6-dotenv/releases/) page. Check [Packages](https://github.com/szkiba/xk6-dotenv/pkgs/container/xk6-dotenv) page for pre-built k6 Docker images.
+You can download pre-built k6 binaries from [Releases](https://github.com/szkiba/xk6-dotenv/releases/) page.
 
 ## Build
 
